@@ -16,9 +16,10 @@ def lessTriplets (arr, target):
         left, right = i+1, n-1
 
         while left < right:
+            print('n',n)    
             threeSum = num1 + arr[left] + arr[right]
             if threeSum < target:
-                count += 1
+                count += right-left
                 left += 1
             else: 
                 right -= 1

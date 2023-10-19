@@ -13,14 +13,22 @@ output: 2
 
 def findMinSubArray(s, arr):
     output = float('inf')
-    windowSum, windowStart = 0.0, 0 
-    for windowEnd in range(len(arr)):
+    windowSum 0.0
+    windowEnd, windowStart = 0, 0
+    while windowEnd < len(arr):
         windowSum += arr[windowEnd]
-        if windowSum >= s:
-            print(windowEnd-windowStart)
-            output = min(output, windowEnd-windowStart)
+        while windowSum >= s:
+            output = min(output, windowEnd-windowStart+1)
             windowSum -= arr[windowStart]
             windowStart += 1
+        windowEnd += 1
     return output
 
+# loop through arr
+# as you loop,add val at windowENd To windowSum
+# once you hit sum, 
+#check if val at windowStart can be removed from windowSum yet have windowSum still >= S
+#if yes, remove val at windowStart, decrease output, increase windowStart by + 1
+#repeat this check on val at windowStart until we can no longer cutoff indexes , making that subarray no longer satisfy condition, 
+#continue looking for subarrays that satisfy what we;re looking for
 
