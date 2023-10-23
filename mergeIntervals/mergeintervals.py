@@ -9,16 +9,21 @@ Output: [[2,4], [5,9]]
 """
 
 def merge_intervals(intervals):
+    if len(intervals) < 2:
+        return intervals
     merged_intervals = []
     organized_intervals = sorted(intervals, key=lambda x: x.start)
     start = organized_intervals[0].start
     end = organized_intervals[0].end
     for i in range(1,len(intervals)):
-        interval = intervals[i]
-        # A.end > B.start and B.end > A.end
-        start = min(start, interval.start)
-        end = max(end, interval.end)
-        # A completely 
+        if intervals[i].start <= end:
+            end = max(end, intervals[i].end)
+        else:
+            merged_intervals.append([start,end])
+            start = intervals[i].start
+            end = intervals[i].end
+    merged_intervals.append([start,end])
+    return merged_intervals
         
     
 
