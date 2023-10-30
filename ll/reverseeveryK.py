@@ -8,30 +8,29 @@ with less than ‘k’ elements, reverse it too."""
     # TODO: Write your code here
     current, previous = head, None
     while True:
-        last_node_previous_part = previous
-        last_node_of_sub_list = current
+        last_of_previous_part = previous
+        last_of_sub_list = current
+
+        i=0
         next = None
-        i = 0
-
-        while current and i<k:
-            next = current.next
-            current.next = previous
-            previous = current
-            current = next
-            i+=1
-
-        if last_node_previous_part:
-            last_node_previous_part.next = previous 
-        else:
+        while i < k and current:
+          next = current.next
+          current.next = previous
+          previous = current
+          current = next
+          i += 1
+        
+        if not last_of_previous_part:
             head = previous
+        else:
+            last_of_previous_part.next = previous
 
-        last_node_of_sub_list.next = current
-
+        last_of_sub_list.next = current
+        
         if not current:
             break
         
-        previous = last_node_of_sub_list
-    
+        previous = last_of_sub_list
     return head
 
 
