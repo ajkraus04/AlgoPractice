@@ -41,4 +41,5 @@ def dailyTemperatures(self, temperatures):
             
         stack.append(temperatures[i])
         hashmap[temperatures[i]] = i; 
-    return res.append(0 for nums in stack)
+    res.append(0 for nums in stack)
+    return
