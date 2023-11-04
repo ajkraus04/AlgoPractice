@@ -13,7 +13,7 @@ def traverse(self, root):
     while queue:
         n  = len(queue)
         level = []
-        for i in range (n):
+        for _ in range (n):
             curr = queue.popleft()
             if curr.left:
                 queue.append(curr.left)
