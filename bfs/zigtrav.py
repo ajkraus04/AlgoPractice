@@ -12,27 +12,20 @@ level and keep alternating in the same manner for the following levels.
     direction = True
     while queue:
         n = len(queue)
-        level = []
+        level = deque()
         for i in range(n):
-            curr = None
+            curr = queue.popleft()
             if direction:
-                #left to right
-                curr = queue.popleft() 
-                if curr.left:
-                    queue.append(curr.left)
-                if curr.right:
-                    queue.append(curr.right)
+                level.append(curr.val)
             else:
-                #right to left
-                curr queue.pop()
-                if curr.right:
-                    queue.append(curr.right)
-                if curr.left:
-                    queue.append(curr.left)
+                level.appendleft(curr.val)
             
-            level.append(curr.val)
+            if curr.left:
+                queue.append(curr.left)
+            if curr.right:
+                queue.append(curr.right)
         direction = not direction  
-        result.append(level)
+        result.append(list(level))
     return result
 
 

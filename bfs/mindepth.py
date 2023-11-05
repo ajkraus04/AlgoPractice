@@ -17,13 +17,11 @@ The minimum depth is the number of nodes along
         minimumTreeDepth += 1
         for _ in range(n):
             curr = queue.popleft()
-
+            if not curr.left and not curr.right:
+                return minimumTreeDepth
+                
             if curr.left:
                 queue.append(curr.left)
-            else:
-                return minimumTreeDepth
             if curr.right:
                 queue.append(curr.right)
-            else:
-                return minimumTreeDepth
     return minimumTreeDepth
