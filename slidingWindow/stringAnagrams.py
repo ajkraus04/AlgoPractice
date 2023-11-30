@@ -28,7 +28,7 @@ class Solution:
       
       if windowEnd >= len(pattern) - 1:
         leftChar = str1[windowStart]
-        windowStart -= 1
+        windowStart += 1
         if leftChar in char_freq:
           if char_freq[leftChar] == 0:
             matches -= 1
